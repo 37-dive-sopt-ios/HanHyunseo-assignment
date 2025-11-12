@@ -1,9 +1,16 @@
+//
+//  CategoryView.swift
+//  sopt-37th-02assignment
+//
+//  Created by 한현서 on 11/13/25.
+//
+
 import Foundation
 import UIKit
 import SnapKit
 import Then
 
-final class CategoryView: UIView, UICollectionViewDelegateFlowLayout {
+final class FoodCategoryView: UIView, UICollectionViewDelegateFlowLayout {
     
     // MARK: - Properties
     
@@ -21,7 +28,7 @@ final class CategoryView: UIView, UICollectionViewDelegateFlowLayout {
         collectionView.isScrollEnabled = false // 스크롤은 바깥의 scrollView가 하도록
         collectionView.backgroundColor = .clear
         
-        collectionView.register(CategoryCell.self, forCellWithReuseIdentifier: CategoryCell.identifier)
+        collectionView.register(FoodCategoryCell.self, forCellWithReuseIdentifier: FoodCategoryCell.identifier)
         
         return collectionView
     }()
@@ -60,16 +67,16 @@ final class CategoryView: UIView, UICollectionViewDelegateFlowLayout {
 
 // MARK: - UICollectionViewDataSource
 
-extension CategoryView: UICollectionViewDataSource {
+extension FoodCategoryView: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return data.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(
-            withReuseIdentifier: CategoryCell.identifier,
+            withReuseIdentifier: FoodCategoryCell.identifier,
             for: indexPath
-        ) as? CategoryCell else {
+        ) as? FoodCategoryCell else {
             return UICollectionViewCell()
         }
         
@@ -79,7 +86,7 @@ extension CategoryView: UICollectionViewDataSource {
 }
 
 
-extension CategoryView {
+extension FoodCategoryView {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         

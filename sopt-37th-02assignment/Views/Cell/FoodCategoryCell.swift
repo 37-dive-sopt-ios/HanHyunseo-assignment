@@ -10,7 +10,7 @@ import UIKit
 import SnapKit
 import Then
 
-final class CategoryCell: UICollectionViewCell {
+final class FoodCategoryCell: UICollectionViewCell {
     static let identifier = "CategoryCell" //
     
 //    private let foodCategoryImageView: UIImageView().then{
