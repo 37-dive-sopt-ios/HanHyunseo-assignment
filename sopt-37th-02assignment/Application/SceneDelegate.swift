@@ -24,7 +24,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // 3.UINavigationController를 root에 올림
           // 스택 구조로 뷰를 쌓아 올리는 형태
           // 사용자 경험을 다음 페이지에서도 제공하기 위해
-          let vc = UINavigationController(rootViewController: LoginViewController())
+          let vc = UINavigationController(rootViewController: FeedViewController())
         // 4.
           window.rootViewController = vc
         // 5.

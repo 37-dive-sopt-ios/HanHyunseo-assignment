@@ -49,8 +49,8 @@ class WelcomeViewController: UIViewController {
     
     lazy var backBottomButton: UIButton = {
         let b = UIButton(type: .system)
-        b.setTitle("뒤로가기", for: .normal)
-        b.titleLabel?.font = .systemFont(ofSize: 16, weight: .semibold)
+        b.setTitle("메인으로 가기", for: .normal)
+        b.titleLabel?.font = .systemFont(ofSize: 18, weight: .bold)
         b.setTitleColor(.white, for: .normal)
         b.backgroundColor = UIColor(named: "baemin_mint_500") ?? .systemTeal
         b.layer.cornerRadius = 4
@@ -124,13 +124,14 @@ class WelcomeViewController: UIViewController {
     // MARK: - Bind
     
     private func bind() {
-        backBottomButton.addTarget(self, action: #selector(didTapBack), for: .touchUpInside)
+        backBottomButton.addTarget(self, action: #selector(gotoMain), for: .touchUpInside)
     }
+    
     
     // MARK: - Actions
     
-    @objc private func didTapBack() {
-        delegate?.resetLoginFields() // 1) 로그인 입력 초기화 지시
-        navigationController?.popViewController(animated: true) // 2) 로그인 화면으로 복귀
+    @objc private func gotoMain() {
+        let feedVC = FeedViewController()
+        navigationController?.pushViewController(feedVC, animated: true)
     }
 }

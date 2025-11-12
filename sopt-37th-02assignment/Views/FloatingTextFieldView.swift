@@ -188,7 +188,7 @@ class FloatingTextFieldView: UIControl, UITextFieldDelegate {
         if isFR { textField.becomeFirstResponder() }
     }
 
-    // ✅ 추가: 텍스트 삭제 액션 (해당 필드만 클리어)
+    // 추가: 텍스트 삭제 액션 (해당 필드만 클리어)
     @objc private func clearText() {
         textField.text = ""
         onTextChanged?("")               // 상위에 변경 알림 (로그인 버튼 활성화 갱신용)

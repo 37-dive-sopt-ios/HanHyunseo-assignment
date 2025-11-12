@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		78C0A75B2EC4F6FB0043B417 /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = 78C0A75A2EC4F6FB0043B417 /* Then */; };
 		78E12B172EB2823E00E503EC /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 78E12B162EB2823E00E503EC /* SnapKit */; };
 /* End PBXBuildFile section */
 
@@ -41,6 +42,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				78E12B172EB2823E00E503EC /* SnapKit in Frameworks */,
+				78C0A75B2EC4F6FB0043B417 /* Then in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -84,6 +86,7 @@
 			name = "sopt-37th-02assignment";
 			packageProductDependencies = (
 				78E12B162EB2823E00E503EC /* SnapKit */,
+				78C0A75A2EC4F6FB0043B417 /* Then */,
 			);
 			productName = "sopt-37th-02assignment";
 			productReference = 78E12AF92EB27FB900E503EC /* sopt-37th-02assignment.app */;
@@ -115,6 +118,7 @@
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
 				78E12B152EB2823E00E503EC /* XCRemoteSwiftPackageReference "SnapKit" */,
+				78C0A7592EC4F6FB0043B417 /* XCRemoteSwiftPackageReference "Then" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 78E12AFA2EB27FB900E503EC /* Products */;
@@ -158,7 +162,6 @@
 				INFOPLIST_FILE = "sopt-37th-02assignment/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
@@ -186,7 +189,6 @@
 				INFOPLIST_FILE = "sopt-37th-02assignment/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
@@ -346,6 +348,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		78C0A7592EC4F6FB0043B417 /* XCRemoteSwiftPackageReference "Then" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/devxoul/Then";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.0.0;
+			};
+		};
 		78E12B152EB2823E00E503EC /* XCRemoteSwiftPackageReference "SnapKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SnapKit/SnapKit";
@@ -357,6 +367,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		78C0A75A2EC4F6FB0043B417 /* Then */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 78C0A7592EC4F6FB0043B417 /* XCRemoteSwiftPackageReference "Then" */;
+			productName = Then;
+		};
 		78E12B162EB2823E00E503EC /* SnapKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 78E12B152EB2823E00E503EC /* XCRemoteSwiftPackageReference "SnapKit" */;
