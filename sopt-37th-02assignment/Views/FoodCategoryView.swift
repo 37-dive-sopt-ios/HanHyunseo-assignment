@@ -26,7 +26,7 @@ final class FoodCategoryView: UIView, UICollectionViewDelegateFlowLayout {
         collectionView.delegate = self // delegate를 self로 설정
         
         collectionView.isScrollEnabled = false // 스크롤은 바깥의 scrollView가 하도록
-        collectionView.backgroundColor = .clear
+        collectionView.backgroundColor = .white
         
         collectionView.register(FoodCategoryCell.self, forCellWithReuseIdentifier: FoodCategoryCell.identifier)
         
@@ -39,6 +39,7 @@ final class FoodCategoryView: UIView, UICollectionViewDelegateFlowLayout {
         super.init(frame: frame)
         setupHierarchy()
         setupLayout()
+        setupStyle()
     }
     
     required init?(coder: NSCoder) {
@@ -49,6 +50,10 @@ final class FoodCategoryView: UIView, UICollectionViewDelegateFlowLayout {
     
     private func setupHierarchy() {
         self.addSubview(collectionView)
+    }
+    
+    private func setupStyle() {
+        self.backgroundColor = UIColor(named: "baeminWhite")
     }
     
     private func setupLayout() {

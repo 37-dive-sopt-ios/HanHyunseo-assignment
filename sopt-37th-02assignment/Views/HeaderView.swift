@@ -4,23 +4,26 @@
 //
 //  Created by 한현서 on 11/13/25.
 //
-
 import Foundation
 import UIKit
 import SnapKit
 import Then
 
 final class HeaderView: UIView {
-    private let placeholderLabel = UILabel().then {
+    
+    // (컴포넌트 정의는 동일)
+    private let textField = UITextField().then {
         $0.text = "찾아라! 맛있는 음식과 맛집"
         $0.font = .systemFont(ofSize: 14, weight: .medium)
         $0.textColor = .baeminGray300
     }
     
     private let searchIconView = UIImageView().then {
-        $0.image = UIImage.search
+        $0.image = UIImage(named: "search")
         $0.contentMode = .scaleAspectFit
+        $0.tintColor = .black
     }
+    
     
     // MARK: - Init
     
@@ -35,33 +38,37 @@ final class HeaderView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    // MARK: - Setup Methods
+    override func layoutSubviews() {
+        super.layoutSubviews()
+    }
     
+    // MARK: - Setup Methods
+        
     private func setupStyle() {
         self.backgroundColor = .baeminWhite
-        self.layer.cornerRadius = 20
+        self.layer.cornerRadius = 22
         self.layer.borderWidth = 1.0
-        self.layer.borderColor = UIColor(named: "baemin_black")?.cgColor
+        self.layer.borderColor = UIColor.baeminBlack.cgColor
     }
     
     private func setupHierarchy() {
-        self.addSubview(placeholderLabel)
+        self.addSubview(textField)
         self.addSubview(searchIconView)
+
     }
     
     private func setupLayout() {
-        // 돋보기 아이콘 (오른쪽)
         searchIconView.snp.makeConstraints {
             $0.centerY.equalToSuperview()
             $0.trailing.equalToSuperview().inset(16)
-            $0.width.height.equalTo(24) // 아이콘 크기
+            $0.width.height.equalTo(24)
         }
         
-        // 플레이스홀더 레이블 (왼쪽)
-        placeholderLabel.snp.makeConstraints {
-            $0.centerY.equalToSuperview()
+        textField.snp.makeConstraints {
+            $0.centerY.equalTo(searchIconView)
             $0.leading.equalToSuperview().inset(16)
             $0.trailing.equalTo(searchIconView.snp.leading).offset(-8)
         }
+        
     }
 }

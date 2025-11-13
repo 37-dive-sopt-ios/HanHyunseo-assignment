@@ -10,98 +10,116 @@ import SnapKit
 import Then
 
 public final class FeedViewController: UIViewController {
-    private let searchView = HeaderView()
+    
+    // 1. 네비게이션 바 아이템
+    private lazy var titleButton = UIButton(type: .system).then {
+        $0.setTitle("우리집", for: .normal)
+        $0.titleLabel?.font = .systemFont(ofSize: 18, weight: .bold)
+        $0.setImage(UIImage(systemName: "chevron.down"), for: .normal)
+        $0.tintColor = .black
+        $0.semanticContentAttribute = .forceRightToLeft
+    }
+    
+    // 2. 고정될 뷰
+    private let headerView = HeaderView()
+    
+    // 3. 스크롤될 뷰
     private let scrollView = UIScrollView()
+    
+    // 4. 스크롤 뷰 내부의 뷰들
+    private let bMartBannerView = BMartBannerView()
+    private let serviceTabView = ServiceTabView()
     private let foodCategoryView = FoodCategoryView()
     private let storeCategoryView = StoreCategoryView()
     private let bannerView = BannerView()
+    private let rankingView = RankingView()
+    
     
     // MARK: Life Cycle
     override public func viewDidLoad() {
         super.viewDidLoad()
+        setupNav()
         setUI()
         setLayout()
-        setupNav()
+    }
+    
+    // 뷰의 크기가 정해진 후 그라데이션 크기 설정
+    override public func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+    }
+    
+    // MARK: - Setup
+    
+    private func setupNav() {
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: titleButton)
+        // (오른쪽 버튼들 추가...)
     }
     
     private func setUI() {
-        view.backgroundColor = .baeminBackgroundWhite
-        view.addSubviews(searchView, scrollView)
-        scrollView.addSubviews(foodCategoryView, storeCategoryView, bannerView)
+        view.addSubviews(headerView, scrollView)
+        scrollView.addSubviews(bMartBannerView, foodCategoryView, storeCategoryView, bannerView, rankingView, serviceTabView)
+        
+        view.backgroundColor = .baeminMint50010
+        scrollView.backgroundColor = .clear
     }
     
     private func setLayout() {
         
-        searchView.snp.makeConstraints {
+        // --- 1. 고정 뷰 (검색창) ---
+        headerView.snp.makeConstraints {
             $0.top.equalTo(view.safeAreaLayoutGuide)
             $0.leading.trailing.equalToSuperview().inset(16)
-            $0.height.equalTo(43) // 검색창 높이
+            $0.height.equalTo(48)
         }
         
+        // --- 2. 스크롤 뷰 ---
         scrollView.snp.makeConstraints {
-            $0.top.equalTo(searchView.snp.bottom).offset(16)
+            $0.top.equalTo(headerView.snp.bottom).offset(16)
             $0.leading.trailing.bottom.equalTo(view.safeAreaLayoutGuide)
         }
         
-        foodCategoryView.snp.makeConstraints {
-            $0.top.equalTo(scrollView.contentLayoutGuide.snp.top).offset(16)
-            $0.leading.equalTo(scrollView.contentLayoutGuide.snp.leading)
-            $0.trailing.equalTo(scrollView.contentLayoutGuide.snp.trailing)
-            $0.width.equalTo(scrollView.frameLayoutGuide.snp.width)
+        // --- 3. 스크롤 뷰 내부 콘텐츠 ---
+        
+        // 3-1. B마트 배너
+        bMartBannerView.snp.makeConstraints {
+            $0.top.equalTo(scrollView.contentLayoutGuide.snp.top) // 스크롤 뷰의 시작
+            $0.leading.trailing.equalTo(scrollView.contentLayoutGuide).inset(16)
+            $0.width.equalTo(scrollView.frameLayoutGuide).offset(-32) // 너비 고정
         }
         
+        // ServiceTabView 레이아웃
+        serviceTabView.snp.makeConstraints {
+            $0.top.equalTo(bMartBannerView.snp.bottom).offset(16) // B마트 배너 아래
+            $0.leading.trailing.equalTo(scrollView.contentLayoutGuide)
+            $0.width.equalTo(scrollView.frameLayoutGuide)
+        }
+        
+        // FoodCategoryView 레이아웃
+        foodCategoryView.snp.makeConstraints {
+            $0.top.equalTo(serviceTabView.snp.bottom)
+            $0.leading.trailing.equalTo(scrollView.contentLayoutGuide)
+            $0.width.equalTo(scrollView.frameLayoutGuide)
+        }
+        
+        // 3-3. 스토어 카테고리
         storeCategoryView.snp.makeConstraints {
             $0.top.equalTo(foodCategoryView.snp.bottom).offset(16)
-            $0.leading.equalTo(scrollView.contentLayoutGuide.snp.leading)
-            $0.trailing.equalTo(scrollView.contentLayoutGuide.snp.trailing)
-            $0.width.equalTo(scrollView.frameLayoutGuide.snp.width)
+            $0.leading.trailing.equalTo(scrollView.contentLayoutGuide)
+            $0.width.equalTo(scrollView.frameLayoutGuide)
         }
         
+        // 3-4. 광고 배너
         bannerView.snp.makeConstraints {
             $0.top.equalTo(storeCategoryView.snp.bottom).offset(16)
-            $0.leading.equalTo(scrollView.contentLayoutGuide.snp.leading).offset(16)
-            $0.trailing.equalTo(scrollView.contentLayoutGuide.snp.trailing).inset(16)
-            $0.width.equalTo(scrollView.frameLayoutGuide.snp.width).offset(-32)
+            $0.leading.trailing.equalTo(scrollView.contentLayoutGuide).inset(16)
+            $0.width.equalTo(scrollView.frameLayoutGuide).offset(-32)
+        }
+        
+        rankingView.snp.makeConstraints {
+            $0.top.equalTo(bannerView.snp.bottom).offset(16)
+            $0.leading.trailing.equalTo(scrollView.contentLayoutGuide)
+            $0.width.equalTo(scrollView.frameLayoutGuide)
             $0.bottom.equalTo(scrollView.contentLayoutGuide.snp.bottom).inset(16)
         }
-    }
-    
-    private func setupNav() {
-        
-        let titleButton = UIButton(type: .system).then {
-            $0.setTitle("우리집", for: .normal)
-            $0.titleLabel?.font = .systemFont(ofSize: 18, weight: .bold)
-            $0.setImage(UIImage(systemName: "chevron.down"), for: .normal)
-            $0.tintColor = .black
-            $0.semanticContentAttribute = .forceRightToLeft
-//            $0.imageEdgeInsets = UIEdgeInsets(top: 0, left: 8, bottom: 0, right: 0)
-        }
-        
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: titleButton)
-
-        let discountButton = UIBarButtonItem(
-            image: UIImage.discount,
-            style: .plain,
-            target: self,
-            action: nil
-        )
-
-        let alarmButton = UIBarButtonItem(
-            image: UIImage.alarm,
-            style: .plain,
-            target: self,
-            action: nil
-        )
-        let cartButton = UIBarButtonItem(
-            image: UIImage.cart,
-            style: .plain,
-            target: self,
-            action: nil
-        )
-        
-        alarmButton.tintColor = .baeminBlack
-        cartButton.tintColor = .baeminBlack
-        
-        self.navigationItem.rightBarButtonItems = [cartButton, alarmButton, discountButton]
     }
 }
