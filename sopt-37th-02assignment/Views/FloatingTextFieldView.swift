@@ -145,8 +145,6 @@ class FloatingTextFieldView: UIControl, UITextFieldDelegate {
         }
         animated ? UIView.animate(withDuration: 0.18, animations: animations) : animations()
     }
-
-    // ✅ 추가: 클리어 버튼 노출/숨김
     private func updateClearButtonVisibility() {
         let hasText = !(textField.text ?? "").isEmpty
         clearButton.isHidden = !hasText

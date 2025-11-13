@@ -44,7 +44,6 @@ public final class FeedViewController: UIViewController, UIScrollViewDelegate {
         scrollView.delegate = self
     }
     
-    // 뷰의 크기가 정해진 후 그라데이션 크기 설정
     override public func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
     }
@@ -54,8 +53,6 @@ public final class FeedViewController: UIViewController, UIScrollViewDelegate {
     private func setupNav() {
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: titleButton)
         
-        
-        // 1. 'UIButton'으로 생성 (UIView의 자식)
         let discountButton = UIButton(type: .system).then {
             $0.setImage(UIImage(named: "discount")?.withRenderingMode(.alwaysOriginal), for: .normal)
         }
@@ -84,7 +81,8 @@ public final class FeedViewController: UIViewController, UIScrollViewDelegate {
         view.addSubviews(headerView, scrollView)
         scrollView.addSubviews(bMartBannerView, foodCategoryView, storeCategoryView, bannerView, rankingView, serviceTabView)
         
-        view.backgroundColor = .baeminMint50010
+        view.backgroundColor = .baeminBackgroundWhite
+//        view.backgroundColor = .red
         scrollView.backgroundColor = .clear
     }
     
@@ -107,14 +105,14 @@ public final class FeedViewController: UIViewController, UIScrollViewDelegate {
         
         // B마트 배너
         bMartBannerView.snp.makeConstraints {
-            $0.top.equalTo(scrollView.contentLayoutGuide.snp.top) // 스크롤 뷰의 시작
-            $0.leading.trailing.equalTo(scrollView.contentLayoutGuide).inset(16)
-            $0.width.equalTo(scrollView.frameLayoutGuide).offset(-32) // 너비 고정
+            $0.top.equalTo(scrollView.contentLayoutGuide.snp.top) // 스크롤 뷰 시작
+            $0.leading.trailing.equalTo(scrollView.contentLayoutGuide).inset(8)
+            $0.trailing.equalTo(scrollView.contentLayoutGuide).inset(24)
         }
         
         // ServiceTabView 레이아웃
         serviceTabView.snp.makeConstraints {
-            $0.top.equalTo(bMartBannerView.snp.bottom).offset(16) // B마트 배너 아래
+            $0.top.equalTo(bMartBannerView.snp.bottom).offset(16)
             $0.leading.trailing.equalTo(scrollView.contentLayoutGuide)
             $0.width.equalTo(scrollView.frameLayoutGuide)
         }
@@ -128,20 +126,20 @@ public final class FeedViewController: UIViewController, UIScrollViewDelegate {
         
         // 스토어 카테고리
         storeCategoryView.snp.makeConstraints {
-            $0.top.equalTo(foodCategoryView.snp.bottom).offset(16)
+            $0.top.equalTo(foodCategoryView.snp.bottom).offset(5)
             $0.leading.trailing.equalTo(scrollView.contentLayoutGuide)
             $0.width.equalTo(scrollView.frameLayoutGuide)
         }
         
         // 광고 배너
         bannerView.snp.makeConstraints {
-            $0.top.equalTo(storeCategoryView.snp.bottom).offset(16)
-            $0.leading.trailing.equalTo(scrollView.contentLayoutGuide).inset(16)
-            $0.width.equalTo(scrollView.frameLayoutGuide).offset(-32)
+            $0.top.equalTo(storeCategoryView.snp.bottom).offset(5)
+            $0.leading.trailing.equalTo(scrollView.contentLayoutGuide)
+            $0.width.equalTo(scrollView.frameLayoutGuide)
         }
         
         rankingView.snp.makeConstraints {
-            $0.top.equalTo(bannerView.snp.bottom).offset(16)
+            $0.top.equalTo(bannerView.snp.bottom).offset(5)
             $0.leading.trailing.equalTo(scrollView.contentLayoutGuide)
             $0.width.equalTo(scrollView.frameLayoutGuide)
             $0.bottom.equalTo(scrollView.contentLayoutGuide.snp.bottom).inset(16)

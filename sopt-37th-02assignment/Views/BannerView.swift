@@ -15,10 +15,7 @@ final class BannerView: UIView, UICollectionViewDelegateFlowLayout {
     
     private lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
-        // 스크롤 방향을 수평으로 설정
         layout.scrollDirection = .horizontal
-        
-        // 배너(셀) 사이의 간격을 0으로 설정
         layout.minimumLineSpacing = 0
         layout.minimumInteritemSpacing = 0
         

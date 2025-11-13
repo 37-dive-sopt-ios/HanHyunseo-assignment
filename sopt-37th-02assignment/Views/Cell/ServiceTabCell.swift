@@ -16,18 +16,18 @@ final class ServiceTabCell: UICollectionViewCell {
     
     private let titleLabel = UILabel().then {
         $0.font = .systemFont(ofSize: 17, weight: .regular)
-        $0.textColor = .systemGray
+        $0.textColor = .baeminGray600
         $0.textAlignment = .center
     }
     
     private let underlineView = UIView().then {
-        $0.backgroundColor = .black
+        $0.backgroundColor = .baeminBlack
         $0.isHidden = true
     }
     
     override var isSelected: Bool {
         didSet {
-            titleLabel.textColor = isSelected ? .black : .systemGray
+            titleLabel.textColor = isSelected ? .baeminBlack : .baeminGray600
             titleLabel.font = isSelected ? .systemFont(ofSize: 17, weight: .bold) : .systemFont(ofSize: 17, weight: .regular)
             underlineView.isHidden = !isSelected
         }

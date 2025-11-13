@@ -24,8 +24,8 @@ final class StoreCategoryView: UIView {
         collectionView.dataSource = self
         
         collectionView.isScrollEnabled = true
-        collectionView.showsHorizontalScrollIndicator = false // 스크롤바 숨기기
-        collectionView.backgroundColor = .clear
+        collectionView.showsHorizontalScrollIndicator = false
+        collectionView.backgroundColor = .baeminWhite
         
         collectionView.register(StoreCategoryCell.self, forCellWithReuseIdentifier: StoreCategoryCell.identifier)
         

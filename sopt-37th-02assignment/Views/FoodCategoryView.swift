@@ -1,5 +1,5 @@
 //
-//  CategoryView.swift
+//  FoodCategoryView.swift
 //  sopt-37th-02assignment
 //
 //  Created by 한현서 on 11/13/25.
@@ -33,6 +33,25 @@ final class FoodCategoryView: UIView, UICollectionViewDelegateFlowLayout {
         return collectionView
     }()
     
+    private let dividerView = UIView().then {
+        $0.backgroundColor = .clear
+    }
+    
+    private let viewMoreButton = UIButton(type: .system).then {
+        $0.setTitle("음식배달에서 더보기", for: .normal)
+        $0.titleLabel?.font = .systemFont(ofSize: 15, weight: .medium)
+        $0.tintColor = .darkGray
+        $0.backgroundColor = .baeminWhite
+        
+        // (아이콘 크기 조절)
+        let config = UIImage.SymbolConfiguration(pointSize: 10, weight: .medium)
+        let image = UIImage(systemName: "chevron.right", withConfiguration: config)
+        $0.setImage(image, for: .normal)
+        
+        $0.semanticContentAttribute = .forceRightToLeft
+        $0.isUserInteractionEnabled = false // 탭 기능 없음
+    }
+    
     // MARK: - Init
     
     override init(frame: CGRect) {
@@ -49,7 +68,7 @@ final class FoodCategoryView: UIView, UICollectionViewDelegateFlowLayout {
     // MARK: - Setup Methods
     
     private func setupHierarchy() {
-        self.addSubview(collectionView)
+        self.addSubviews(collectionView, dividerView, viewMoreButton)
     }
     
     private func setupStyle() {
@@ -58,14 +77,24 @@ final class FoodCategoryView: UIView, UICollectionViewDelegateFlowLayout {
     
     private func setupLayout() {
         collectionView.snp.makeConstraints {
-            
             let cellHeight: CGFloat = 90
             let spacing: CGFloat = 10
-            let inset: CGFloat = 16
-            let totalHeight = (cellHeight * 2) + spacing + (inset * 2)
-            
-            $0.edges.equalToSuperview().inset(inset)
-            $0.height.equalTo(totalHeight)
+            let contentHeight = (cellHeight * 2) + spacing + 10
+            $0.top.equalToSuperview().inset(1)
+            $0.leading.trailing.equalToSuperview().inset(0)
+            $0.height.equalTo(contentHeight)
+        }
+        
+        dividerView.snp.makeConstraints {
+            $0.top.equalTo(collectionView.snp.bottom)
+            $0.leading.trailing.equalToSuperview().inset(16)
+            $0.height.equalTo(1)
+        }
+        
+        viewMoreButton.snp.makeConstraints {
+            $0.top.equalTo(dividerView.snp.bottom).offset(1)
+            $0.leading.trailing.equalToSuperview()
+            $0.bottom.equalToSuperview()
         }
     }
 }
