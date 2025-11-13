@@ -1,5 +1,5 @@
 //
-//  SearchView.swift
+//  HeaderView.swift
 //  sopt-37th-02assignment
 //
 //  Created by 한현서 on 11/13/25.
@@ -10,7 +10,7 @@ import UIKit
 import SnapKit
 import Then
 
-final class SearchView: UIView {
+final class HeaderView: UIView {
     private let placeholderLabel = UILabel().then {
         $0.text = "찾아라! 맛있는 음식과 맛집"
         $0.font = .systemFont(ofSize: 14, weight: .medium)

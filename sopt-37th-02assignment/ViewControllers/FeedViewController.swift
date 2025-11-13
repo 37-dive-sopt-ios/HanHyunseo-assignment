@@ -10,7 +10,7 @@ import SnapKit
 import Then
 
 public final class FeedViewController: UIViewController {
-    private let searchView = SearchView()
+    private let searchView = HeaderView()
     private let scrollView = UIScrollView()
     private let foodCategoryView = FoodCategoryView()
     private let storeCategoryView = StoreCategoryView()
@@ -21,6 +21,7 @@ public final class FeedViewController: UIViewController {
         super.viewDidLoad()
         setUI()
         setLayout()
+        setupNav()
     }
     
     private func setUI() {
@@ -63,5 +64,44 @@ public final class FeedViewController: UIViewController {
             $0.width.equalTo(scrollView.frameLayoutGuide.snp.width).offset(-32)
             $0.bottom.equalTo(scrollView.contentLayoutGuide.snp.bottom).inset(16)
         }
+    }
+    
+    private func setupNav() {
+        
+        let titleButton = UIButton(type: .system).then {
+            $0.setTitle("우리집", for: .normal)
+            $0.titleLabel?.font = .systemFont(ofSize: 18, weight: .bold)
+            $0.setImage(UIImage(systemName: "chevron.down"), for: .normal)
+            $0.tintColor = .black
+            $0.semanticContentAttribute = .forceRightToLeft
+//            $0.imageEdgeInsets = UIEdgeInsets(top: 0, left: 8, bottom: 0, right: 0)
+        }
+        
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: titleButton)
+
+        let discountButton = UIBarButtonItem(
+            image: UIImage.discount,
+            style: .plain,
+            target: self,
+            action: nil
+        )
+
+        let alarmButton = UIBarButtonItem(
+            image: UIImage.alarm,
+            style: .plain,
+            target: self,
+            action: nil
+        )
+        let cartButton = UIBarButtonItem(
+            image: UIImage.cart,
+            style: .plain,
+            target: self,
+            action: nil
+        )
+        
+        alarmButton.tintColor = .baeminBlack
+        cartButton.tintColor = .baeminBlack
+        
+        self.navigationItem.rightBarButtonItems = [cartButton, alarmButton, discountButton]
     }
 }
