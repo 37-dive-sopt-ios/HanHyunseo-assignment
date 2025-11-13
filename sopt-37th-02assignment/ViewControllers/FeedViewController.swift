@@ -53,7 +53,31 @@ public final class FeedViewController: UIViewController, UIScrollViewDelegate {
     
     private func setupNav() {
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: titleButton)
-        // (오른쪽 버튼들 추가...)
+        
+        
+        // 1. 'UIButton'으로 생성 (UIView의 자식)
+        let discountButton = UIButton(type: .system).then {
+            $0.setImage(UIImage(named: "discount")?.withRenderingMode(.alwaysOriginal), for: .normal)
+        }
+        
+        let bellButton = UIButton(type: .system).then {
+            $0.setImage(UIImage(named: "alarm"), for: .normal)
+            $0.tintColor = .black
+        }
+        
+        let cartButton = UIButton(type: .system).then {
+            $0.setImage(UIImage(named: "cart"), for: .normal)
+            $0.tintColor = .black
+        }
+        let stackView = UIStackView(arrangedSubviews: [discountButton, bellButton, cartButton]).then {
+            $0.axis = .horizontal
+            $0.distribution = .equalSpacing
+            $0.spacing = 12
+        }
+        
+        let rightBarButton = UIBarButtonItem(customView: stackView)
+        
+        self.navigationItem.rightBarButtonItem = rightBarButton
     }
     
     private func setUI() {
