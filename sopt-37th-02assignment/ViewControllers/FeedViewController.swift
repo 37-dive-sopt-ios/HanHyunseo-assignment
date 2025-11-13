@@ -10,6 +10,7 @@ import SnapKit
 import Then
 
 public final class FeedViewController: UIViewController {
+    private let searchView = SearchView()
     private let scrollView = UIScrollView()
     private let foodCategoryView = FoodCategoryView()
     private let storeCategoryView = StoreCategoryView()
@@ -23,14 +24,22 @@ public final class FeedViewController: UIViewController {
     }
     
     private func setUI() {
-        view.backgroundColor = .white
-        view.addSubviews(scrollView)
+        view.backgroundColor = .baeminBackgroundWhite
+        view.addSubviews(searchView, scrollView)
         scrollView.addSubviews(foodCategoryView, storeCategoryView, bannerView)
     }
     
     private func setLayout() {
+        
+        searchView.snp.makeConstraints {
+            $0.top.equalTo(view.safeAreaLayoutGuide)
+            $0.leading.trailing.equalToSuperview().inset(16)
+            $0.height.equalTo(43) // 검색창 높이
+        }
+        
         scrollView.snp.makeConstraints {
-            $0.edges.equalTo(view.safeAreaLayoutGuide)
+            $0.top.equalTo(searchView.snp.bottom).offset(16)
+            $0.leading.trailing.bottom.equalTo(view.safeAreaLayoutGuide)
         }
         
         foodCategoryView.snp.makeConstraints {
