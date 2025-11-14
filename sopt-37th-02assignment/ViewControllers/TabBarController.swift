@@ -22,40 +22,40 @@ final class TabBarController: UITabBarController {
         let navHome = UINavigationController(rootViewController: homeVC)
         navHome.tabBarItem = UITabBarItem(
             title: "홈",
-            image: UIImage(systemName: "house"), // 기본 아이콘
-            selectedImage: UIImage(systemName: "house.fill")
+            image: UIImage(named: "tabbarhome"),
+            selectedImage: UIImage(named: "tabbarhome"),
         )
         
         let shoppingVC = UIViewController()
         shoppingVC.view.backgroundColor = .baeminMint300
         shoppingVC.tabBarItem = UITabBarItem(
             title: "장보기·쇼핑",
-            image: UIImage(systemName: "bag"),
-            selectedImage: UIImage(systemName: "bag.fill")
+            image: UIImage(named: "tabbarcart"),
+            selectedImage: UIImage(named: "tabbarcart")
         )
         
         let wishlistVC = UIViewController()
         wishlistVC.view.backgroundColor = .baeminMint500
         wishlistVC.tabBarItem = UITabBarItem(
             title: "찜",
-            image: UIImage(systemName: "heart"),
-            selectedImage: UIImage(systemName: "heart.fill")
+            image: UIImage(named: "tabbarheart"),
+            selectedImage: UIImage(named: "tabbarheart")
         )
         
         let orderVC = UIViewController()
         orderVC.view.backgroundColor = .baeminMint300
         orderVC.tabBarItem = UITabBarItem(
             title: "주문내역",
-            image: UIImage(systemName: "doc.text"),
-            selectedImage: UIImage(systemName: "doc.text.fill")
+            image: UIImage(named: "tabbarlist"),
+            selectedImage: UIImage(named: "tabbarlist")
         )
         
         let myBaeminVC = UIViewController()
         myBaeminVC.view.backgroundColor = .baeminMint500
         myBaeminVC.tabBarItem = UITabBarItem(
             title: "마이배민",
-            image: UIImage(systemName: "smiley"),
-            selectedImage: UIImage(systemName: "smiley.fill")
+            image: UIImage(named: "tabbarmy"),
+            selectedImage: UIImage(named: "tabbarmy")
         )
         
         self.viewControllers = [navHome, shoppingVC, wishlistVC, orderVC, myBaeminVC]

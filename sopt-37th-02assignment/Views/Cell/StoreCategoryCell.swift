@@ -13,9 +13,9 @@ final class StoreCategoryCell: UICollectionViewCell {
     static let identifier = "StoreCategoryCell"
     
     private let imageView = UIImageView().then{
-        $0.backgroundColor = .systemGray6
-        $0.contentMode = .center
-        $0.tintColor = .darkGray
+        $0.backgroundColor = .baeminWhite
+        $0.contentMode = .scaleAspectFit
+        $0.tintColor = .baeminGray600
         $0.layer.cornerRadius = 12
         $0.clipsToBounds = true
     }

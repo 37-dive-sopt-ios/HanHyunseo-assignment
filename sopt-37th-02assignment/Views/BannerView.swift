@@ -21,16 +21,11 @@ final class BannerView: UIView, UICollectionViewDelegateFlowLayout {
         
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.dataSource = self
-        collectionView.delegate = self // izeForItemAt을 위해 델리게이트 연결
-        // Cannot assign value of type 'BannerView' to type '(any UICollectionViewDelegate)?' 에러 발생
+        collectionView.delegate = self
         collectionView.isPagingEnabled = true
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.backgroundColor = .clear
-        
-        // BannerCell 등록
         collectionView.register(BannerCell.self, forCellWithReuseIdentifier: BannerCell.identifier)
-        
-        // 컬렉션뷰 자체의 패딩은 0으로 설정 (셀이 꽉 차도록)
         collectionView.contentInset = .zero
         
         return collectionView
@@ -57,7 +52,7 @@ final class BannerView: UIView, UICollectionViewDelegateFlowLayout {
     private func setupLayout() {
         collectionView.snp.makeConstraints {
             $0.edges.equalToSuperview()
-            $0.height.equalTo(100)
+            $0.height.equalTo(120)
         }
     }
 }

@@ -35,11 +35,11 @@ struct RankingModel {
     }
     
     static let mockData: [RankingModel] = [
-        RankingModel(storeName: "백억보쌈제육...", rating: 5.0, reviewCount: 1973, description: "[든든한 한끼] 보쌈 막국수", discountPercent: 25, price: 12000, originalPrice: 16000, deliveryInfo: "최소주문금액 없음", storeImage: UIImage(named: "sheep")!),
-        RankingModel(storeName: "명진핏짜피자...", rating: 5.0, reviewCount: 1973, description: "(1인) 피자 + 사이드 Set", discountPercent: 20, price: 12000, originalPrice: 15000, deliveryInfo: "최소주문금액 없음", storeImage: UIImage(named: "sheep")!),
-        RankingModel(storeName: "혜연불닭발...", rating: 5.0, reviewCount: 1973, description: "[인기] 닭발 세트", discountPercent: 25, price: 12000, originalPrice: 16000, deliveryInfo: "최소주문금액 없음", storeImage: UIImage(named: "sheep")!),
-        RankingModel(storeName: "수민춘천닭갈비...", rating: 5.0, reviewCount: 1973, description: "닭갈비 1인정식 (볶음밥 포함)", discountPercent: 25, price: 12000, originalPrice: 16000, deliveryInfo: "최소주문금액 없음", storeImage: UIImage(named: "sheep")!),
-        RankingModel(storeName: "승준이네치킨...", rating: 5.0, reviewCount: 1973, description: "후라이드+양념 반반", discountPercent: 25, price: 12000, originalPrice: 16000, deliveryInfo: "최소주문금액 없음", storeImage: UIImage(named: "sheep")!),
+        RankingModel(storeName: "백억보쌈제육...", rating: 5.0, reviewCount: 1973, description: "[든든한 한끼] 보쌈 막국수", discountPercent: 25, price: 12000, originalPrice: 16000, deliveryInfo: "최소주문금액 없음", storeImage: UIImage(named: "rank1")!),
+        RankingModel(storeName: "명진핏짜피자...", rating: 5.0, reviewCount: 1973, description: "(1인) 피자 + 사이드 Set", discountPercent: 20, price: 12000, originalPrice: 15000, deliveryInfo: "최소주문금액 없음", storeImage: UIImage(named: "rank2")!),
+        RankingModel(storeName: "혜연불닭발...", rating: 5.0, reviewCount: 1973, description: "[인기] 닭발 세트", discountPercent: 25, price: 12000, originalPrice: 16000, deliveryInfo: "최소주문금액 없음", storeImage: UIImage(named: "rank3")!),
+        RankingModel(storeName: "수민춘천닭갈비...", rating: 5.0, reviewCount: 1973, description: "닭갈비 1인정식 (볶음밥 포함)", discountPercent: 25, price: 12000, originalPrice: 16000, deliveryInfo: "최소주문금액 없음", storeImage: UIImage(named: "rank4")!),
+        RankingModel(storeName: "승준이네치킨...", rating: 5.0, reviewCount: 1973, description: "후라이드+양념 반반", discountPercent: 25, price: 12000, originalPrice: 16000, deliveryInfo: "최소주문금액 없음", storeImage: UIImage(named: "rank5")!),
     ]
 }
 

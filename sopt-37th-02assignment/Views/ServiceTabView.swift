@@ -70,10 +70,11 @@ final class ServiceTabView: UIView {
 // MARK: - UICollectionViewDataSource & Delegate
 
 extension ServiceTabView: UICollectionViewDataSource, UICollectionViewDelegate {
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return data.count
     }
-    
+     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(
             withReuseIdentifier: ServiceTabCell.identifier,
@@ -81,8 +82,21 @@ extension ServiceTabView: UICollectionViewDataSource, UICollectionViewDelegate {
         ) as? ServiceTabCell else {
             return UICollectionViewCell()
         }
-        
+         
         cell.configure(with: data[indexPath.item])
         return cell
+    }
+        
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        UIView.animate(withDuration: 0.3) {
+            collectionView.collectionViewLayout.invalidateLayout()
+            collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+        UIView.animate(withDuration: 0.3) {
+            collectionView.collectionViewLayout.invalidateLayout()
+        }
     }
 }

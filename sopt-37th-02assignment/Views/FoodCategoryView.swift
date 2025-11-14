@@ -23,9 +23,9 @@ final class FoodCategoryView: UIView, UICollectionViewDelegateFlowLayout {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         
         collectionView.dataSource = self
-        collectionView.delegate = self // delegate를 self로 설정
+        collectionView.delegate = self
         
-        collectionView.isScrollEnabled = false // 스크롤은 바깥의 scrollView가 하도록
+        collectionView.isScrollEnabled = false
         collectionView.backgroundColor = .white
         
         collectionView.register(FoodCategoryCell.self, forCellWithReuseIdentifier: FoodCategoryCell.identifier)
@@ -43,7 +43,6 @@ final class FoodCategoryView: UIView, UICollectionViewDelegateFlowLayout {
         $0.tintColor = .darkGray
         $0.backgroundColor = .baeminWhite
         
-        // (아이콘 크기 조절)
         let config = UIImage.SymbolConfiguration(pointSize: 10, weight: .medium)
         let image = UIImage(systemName: "chevron.right", withConfiguration: config)
         $0.setImage(image, for: .normal)
@@ -94,7 +93,11 @@ final class FoodCategoryView: UIView, UICollectionViewDelegateFlowLayout {
         viewMoreButton.snp.makeConstraints {
             $0.top.equalTo(dividerView.snp.bottom).offset(1)
             $0.leading.trailing.equalToSuperview()
-            $0.bottom.equalToSuperview()
+            $0.height.equalTo(34)
+        }
+        
+        self.snp.makeConstraints {
+            $0.bottom.equalTo(viewMoreButton.snp.bottom)
         }
     }
 }

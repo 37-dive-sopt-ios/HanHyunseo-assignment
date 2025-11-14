@@ -37,7 +37,7 @@ final class FoodCategoryCell: UICollectionViewCell {
     // MARK: - Init (추가)
     
     override init(frame: CGRect) {
-        super.init(frame: frame)
+        super.init(frame: frame) 
         setupHierarchy()
         setupLayout()
     }

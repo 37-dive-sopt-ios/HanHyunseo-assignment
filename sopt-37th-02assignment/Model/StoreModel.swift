@@ -18,13 +18,12 @@ public struct StoreModel {
     }
     
     public static let mockData: [StoreModel] = [
-        StoreModel(storeCategoryImg: UIImage(named: "sheep")!, storeCategoryName: "B마트"),
-        StoreModel(storeCategoryImg: UIImage(named: "sheep")!, storeCategoryName: "CU"),
-        StoreModel(storeCategoryImg: UIImage(named: "sheep")!, storeCategoryName: "이마트슈퍼"),
-        StoreModel(storeCategoryImg: UIImage(named: "sheep")!, storeCategoryName: "홈플러스"),
-        StoreModel(storeCategoryImg: UIImage(named: "sheep")!, storeCategoryName: "GS25"),
-        StoreModel(storeCategoryImg: UIImage(named: "sheep")!, storeCategoryName: "이마트"),
-        StoreModel(storeCategoryImg: UIImage(named: "sheep")!, storeCategoryName: "컬리"),
-        StoreModel(storeCategoryImg: UIImage(named: "sheep")!, storeCategoryName: "쿠팡프레쉬"),
+        StoreModel(storeCategoryImg: UIImage(named: "Bmart")!, storeCategoryName: "B마트"),
+        StoreModel(storeCategoryImg: UIImage(named: "cu")!, storeCategoryName: "CU"),
+        StoreModel(storeCategoryImg: UIImage(named: "emart")!, storeCategoryName: "이마트"),
+        StoreModel(storeCategoryImg: UIImage(named: "homeplus")!, storeCategoryName: "홈플러스"),
+        StoreModel(storeCategoryImg: UIImage(named: "gs25")!, storeCategoryName: "GS25"),
+        StoreModel(storeCategoryImg: UIImage(named: "kurly")!, storeCategoryName: "컬리"),
+        StoreModel(storeCategoryImg: UIImage(named: "coupang")!, storeCategoryName: "쿠팡프레쉬"),
     ]
 }

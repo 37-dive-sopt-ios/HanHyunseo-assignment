@@ -16,9 +16,8 @@ public struct BannerModel {
     }
     
     public static let mockData: [BannerModel] = [
-        BannerModel(bannerImg: UIImage(named: "divesoptios37hanhyunseo")!),
-        BannerModel(bannerImg: UIImage(named: "sheep")!),
-        BannerModel(bannerImg: UIImage(named: "sheep")!),
-        BannerModel(bannerImg: UIImage(named: "sheep")!),
+        BannerModel(bannerImg: UIImage(named: "banner1")!),
+        BannerModel(bannerImg: UIImage(named: "banner2")!),
+        BannerModel(bannerImg: UIImage(named: "banner3")!),
     ]
 }

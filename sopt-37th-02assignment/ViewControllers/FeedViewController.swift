@@ -102,17 +102,16 @@ public final class FeedViewController: UIViewController, UIScrollViewDelegate {
         }
         
         // 스크롤 뷰 내부 콘텐츠
-        
         // B마트 배너
         bMartBannerView.snp.makeConstraints {
-            $0.top.equalTo(scrollView.contentLayoutGuide.snp.top) // 스크롤 뷰 시작
-            $0.leading.trailing.equalTo(scrollView.contentLayoutGuide).inset(8)
-            $0.trailing.equalTo(scrollView.contentLayoutGuide).inset(24)
+            $0.top.equalTo(scrollView.contentLayoutGuide.snp.top)
+            $0.leading.trailing.equalTo(scrollView.contentLayoutGuide).inset(0)
+            $0.width.equalTo(scrollView.frameLayoutGuide)
         }
         
         // ServiceTabView 레이아웃
         serviceTabView.snp.makeConstraints {
-            $0.top.equalTo(bMartBannerView.snp.bottom).offset(16)
+            $0.top.equalTo(bMartBannerView.snp.bottom).offset(-20)
             $0.leading.trailing.equalTo(scrollView.contentLayoutGuide)
             $0.width.equalTo(scrollView.frameLayoutGuide)
         }
@@ -138,6 +137,7 @@ public final class FeedViewController: UIViewController, UIScrollViewDelegate {
             $0.width.equalTo(scrollView.frameLayoutGuide)
         }
         
+        // 인기 랭킹
         rankingView.snp.makeConstraints {
             $0.top.equalTo(bannerView.snp.bottom).offset(5)
             $0.leading.trailing.equalTo(scrollView.contentLayoutGuide)

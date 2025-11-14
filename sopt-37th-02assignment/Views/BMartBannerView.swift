@@ -15,6 +15,7 @@ final class BMartBannerView: UIView {
     
     private let imageView = UIImageView().then {
         $0.image = .bMartImg
+        $0.contentMode = .left
     }
     
     private let descriptionButton = UIButton().then {
@@ -43,6 +44,8 @@ final class BMartBannerView: UIView {
         $0.configuration?.contentInsets = .zero
     }
     
+    private let gradientLayer = CAGradientLayer()
+    
     // MARK: - Init
     
     override init(frame: CGRect) {
@@ -56,11 +59,27 @@ final class BMartBannerView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        gradientLayer.frame = self.bounds
+    }
+    
     // MARK: - Setup Methods
     
     private func setupStyle() {
-        self.layer.cornerRadius = 12
         self.clipsToBounds = true
+        
+        gradientLayer.colors = [
+            UIColor.baeminMint300.cgColor,
+            UIColor.baeminBackgroundWhite.cgColor,
+            UIColor.baeminBackgroundWhite.cgColor
+        ]
+        
+        gradientLayer.locations = [0.0, 0.8, 1.0]
+        gradientLayer.startPoint = CGPoint(x: 0.3, y: 1.0)
+        gradientLayer.endPoint = CGPoint(x: 0.3, y: 0.0)
+        
+        self.layer.insertSublayer(gradientLayer, at: 0)
     }
     
     private func setupHierarchy() {
@@ -69,17 +88,15 @@ final class BMartBannerView: UIView {
     }
     
     private func setupLayout() {
-        // 제목 레이블 (상단)
         imageView.snp.makeConstraints {
             $0.top.equalToSuperview().inset(12)
-            $0.leading.equalToSuperview().inset(16)
+            $0.leading.equalToSuperview().inset(12)
         }
         
-        // 설명 레이블 (제목 아래)
         descriptionButton.snp.makeConstraints {
             $0.top.equalTo(imageView.snp.bottom).offset(4)
             $0.leading.equalTo(imageView)
-            $0.bottom.equalToSuperview().inset(12)
+            $0.bottom.equalToSuperview().inset(42)
         }
     }
 }
