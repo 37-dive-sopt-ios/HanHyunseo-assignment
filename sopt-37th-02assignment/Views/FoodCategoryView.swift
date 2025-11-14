@@ -91,7 +91,7 @@ final class FoodCategoryView: UIView, UICollectionViewDelegateFlowLayout {
         }
         
         viewMoreButton.snp.makeConstraints {
-            $0.top.equalTo(dividerView.snp.bottom).offset(1)
+            $0.top.equalTo(dividerView.snp.bottom).offset(2)
             $0.leading.trailing.equalToSuperview()
             $0.height.equalTo(34)
         }

@@ -13,7 +13,7 @@ import Then
 final class ServiceTabView: UIView {
     
     // MARK: - Properties
-    
+    var onTabSelected: ((Int) -> Void)?
     private let data = ServiceTabModel.mockData
     
     private lazy var collectionView: UICollectionView = {
@@ -37,7 +37,7 @@ final class ServiceTabView: UIView {
         
         return collectionView
     }()
-
+    
     // MARK: - Init
     
     override init(frame: CGRect) {
@@ -65,6 +65,11 @@ final class ServiceTabView: UIView {
             $0.height.equalTo(44)
         }
     }
+    
+    public func selectTab(at indexPath: IndexPath) {
+        collectionView.selectItem(at: indexPath, animated: true, scrollPosition: .centeredHorizontally)
+        self.collectionView(collectionView, didSelectItemAt: indexPath)
+    }
 }
 
 // MARK: - UICollectionViewDataSource & Delegate
@@ -74,7 +79,7 @@ extension ServiceTabView: UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return data.count
     }
-     
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(
             withReuseIdentifier: ServiceTabCell.identifier,
@@ -82,16 +87,17 @@ extension ServiceTabView: UICollectionViewDataSource, UICollectionViewDelegate {
         ) as? ServiceTabCell else {
             return UICollectionViewCell()
         }
-         
+        
         cell.configure(with: data[indexPath.item])
         return cell
     }
-        
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         UIView.animate(withDuration: 0.3) {
             collectionView.collectionViewLayout.invalidateLayout()
             collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
         }
+        onTabSelected?(indexPath.item)
     }
     
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
