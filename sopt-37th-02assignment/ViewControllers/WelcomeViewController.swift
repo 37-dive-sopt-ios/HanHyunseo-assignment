@@ -131,7 +131,7 @@ class WelcomeViewController: UIViewController {
     // MARK: - Actions
     
     @objc private func gotoMain() {
-        let feedVC = FeedViewController()
+        let feedVC = TabBarController()
         navigationController?.pushViewController(feedVC, animated: true)
     }
 }
