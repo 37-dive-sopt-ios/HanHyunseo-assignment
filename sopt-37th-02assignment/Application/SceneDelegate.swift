@@ -23,7 +23,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
           let window = UIWindow(windowScene: windowScene)
         // 3.UINavigationController를 root에 올림
           // 스택 구조로 뷰를 쌓아 올리는 형태
-          let vc = UINavigationController(rootViewController: LoginViewController())
+          let vc = UINavigationController(rootViewController: TabBarController())
         // 4.
           window.rootViewController = vc
         // 5.

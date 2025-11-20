@@ -29,7 +29,7 @@ final class TabBarController: UITabBarController {
         let shoppingVC = UIViewController()
         shoppingVC.view.backgroundColor = .baeminMint300
         shoppingVC.tabBarItem = UITabBarItem(
-            title: "장보기·쇼핑",
+            title: "서버",
             image: UIImage(named: "tabbarcart"),
             selectedImage: UIImage(named: "tabbarcart")
         )
