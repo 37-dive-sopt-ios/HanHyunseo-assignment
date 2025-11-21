@@ -20,7 +20,7 @@ final class ServerViewController: UIViewController {
     private let contentView = UIView()
     private let stackView = UIStackView().then {
         $0.axis = .vertical
-        $0.spacing = 30 // 섹션 간 간격
+        $0.spacing = 30
         $0.distribution = .fill
     }
     
@@ -35,7 +35,7 @@ final class ServerViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .white
         setupLayout()
-        bindActions() // 이벤트를 연결합니다.
+        bindActions()
     }
     
     // MARK: - Layout
@@ -60,22 +60,18 @@ final class ServerViewController: UIViewController {
     // MARK: - Binding (뷰의 이벤트와 네트워크 로직 연결)
     private func bindActions() {
         
-        // 1. 로그인 이벤트
         loginView.onLoginTapped = { [weak self] id, pw in
             self?.requestLogin(id: id, pw: pw)
         }
         
-        // 2. 조회 이벤트
         userInfoView.onGetInfoTapped = { [weak self] in
             self?.requestGetInfo()
         }
         
-        // 3. 수정 이벤트
         userUpdateView.onUpdateTapped = { [weak self] name, email, age in
             self?.requestUpdate(name: name, email: email, age: age)
         }
         
-        // 4. 탈퇴 이벤트
         userDeleteView.onDeleteTapped = { [weak self] in
             self?.requestDelete()
         }
@@ -88,19 +84,15 @@ extension ServerViewController {
     private func requestLogin(id: String, pw: String) {
         let request = LoginRequest(username: id, password: pw)
         
-        // ⚡️ 중요: Closure 대신 Task와 await 사용
         Task {
             do {
-                // provider.request 호출 시 'try await' 필수
                 let response: BaseResponse<LoginResponse> = try await provider.request(.login(request))
                 
-                // UI 업데이트 (MainActor 혹은 DispatchQueue.main)
                 if let data = response.data {
                     self.currentUserId = data.userId
                     self.userInfoView.updateStatus("로그인 성공! (ID: \(data.userId))\n\(data.message)", isSuccess: true)
                 }
             } catch {
-                // 에러 처리
                 self.userInfoView.updateStatus("로그인 실패", isSuccess: false)
                 print(error)
             }
@@ -151,7 +143,6 @@ extension ServerViewController {
         
         Task {
             do {
-                // 탈퇴는 응답 데이터가 String인 경우로 가정
                 let response: BaseResponse<String> = try await provider.request(.deleteUser(id: uid))
                 
                 self.userInfoView.updateStatus("탈퇴 완료: \(response.message ?? "우리 나중에 다시 만나요..꼬옥..")", isSuccess: true)
