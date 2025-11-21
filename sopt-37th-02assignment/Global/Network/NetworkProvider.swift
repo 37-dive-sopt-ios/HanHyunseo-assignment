@@ -9,12 +9,12 @@ import Foundation
 
 // 네트워크 서비스 프로토콜 (Moya의 Provider 컨셉!)
 protocol NetworkProviding {
-    // Swift Concurrency를 사용한 네트워크 요청
-    func request<T: Decodable>(_ target: TargetType) async throws -> T
+    associatedtype Target: TargetType // "이 프로바이더는 특정 타겟 전용입니다"라고 선언
+    func request<T: Decodable>(_ target: Target) async throws -> T
 }
 
 // URLSession 기반 NetworkProvider 구현체 (Moya의 MoyaProvider와 유사!)
-public final class NetworkProvider: NetworkProviding {
+final class NetworkProvider<Target: TargetType>: NetworkProviding {
     
     // MARK: - Properties
     
@@ -32,7 +32,7 @@ public final class NetworkProvider: NetworkProviding {
     // Swift Concurrency를 사용한 네트워크 요청
     // - Parameter target: TargetType 프로토콜을 준수하는 요청 객체
     // - Returns: Decodable 타입으로 디코딩된 응답 데이터
-    func request<T: Decodable>(_ target: TargetType) async throws -> T {
+    func request<T: Decodable>(_ target: Target) async throws -> T {
         do {
             // 1. URLRequest 생성
             let urlRequest = try target.toURLRequest()
