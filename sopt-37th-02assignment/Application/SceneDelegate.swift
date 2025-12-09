@@ -17,19 +17,18 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         
-        // 1.
-          guard let windowScene = (scene as? UIWindowScene) else { return }
-        // 2.
-          let window = UIWindow(windowScene: windowScene)
-        // 3.UINavigationController를 root에 올림
-          // 스택 구조로 뷰를 쌓아 올리는 형태
-          let vc = UINavigationController(rootViewController: LoginViewController())
-        // 4.
-          window.rootViewController = vc
-        // 5.
-          self.window = window
-        // 6. keyWindow(사용자에게 보이는 윈도우) 설정
-          window.makeKeyAndVisible()
+        guard let windowScene = (scene as? UIWindowScene) else { return }
+        
+        let window = UIWindow(windowScene: windowScene)
+        
+        let appFactory = AppFactory()
+        let rootVC = TabBarController(factory: appFactory)
+        
+        window.rootViewController = rootVC
+        
+        self.window = window
+        
+        window.makeKeyAndVisible()
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

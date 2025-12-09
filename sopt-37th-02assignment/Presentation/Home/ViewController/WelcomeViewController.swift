@@ -131,7 +131,17 @@ class WelcomeViewController: UIViewController {
     // MARK: - Actions
     
     @objc private func gotoMain() {
-        let feedVC = TabBarController()
-        navigationController?.pushViewController(feedVC, animated: true)
-    }
+            let factory = AppFactory()
+            
+            let mainVC = TabBarController(factory: factory)
+            
+            if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+               let window = windowScene.windows.first {
+                
+                window.rootViewController = mainVC
+                window.makeKeyAndVisible()
+                
+                UIView.transition(with: window, duration: 0.3, options: .transitionCrossDissolve, animations: nil)
+            }
+        }
 }
